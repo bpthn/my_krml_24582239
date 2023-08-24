@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "my_krml_24582239"
+version = "0.1.0"
+description = "A package for doing great things!"
+authors = ["my_krml_24582239"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9.13"
+pandas = "2.0.1"
+scikit-learn = "1.2.2"
+
+[tool.poetry.dev-dependencies]
+
+[tool.poetry.group.dev.dependencies]
+pytest = "7.4.0"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
