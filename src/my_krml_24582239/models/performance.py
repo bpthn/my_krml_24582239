@@ -92,7 +92,7 @@ def print_classify_scores(y_preds, y_actuals, set_name=None):
     """
     from sklearn.metrics import f1_score, precision_score, recall_score, accuracy_score
 
-    print(f"f1_score {set_name}: {f1_score(y_actuals, y_preds, squared=False)}")
+    print(f"f1_score {set_name}: {f1_score(y_actuals, y_preds)}")
     print(f"precision_score {set_name}: {precision_score(y_actuals, y_preds)}")
     print(f"recall_score {set_name}: {recall_score(y_actuals, y_preds)}")
     print(f"accuracy_score {set_name}: {accuracy_score(y_actuals, y_preds)}")
@@ -147,3 +147,9 @@ def fit_assess_classify(model, X_train, y_train, X_val, y_val):
     assess_classify_set(model, X_train, y_train, set_name='Training')
     assess_classify_set(model, X_val, y_val, set_name='Validation')
     return model
+
+def print_classify_scores(model, X_actuals, y_actuals, set_name=''):
+    from sklearn.metrics import roc_auc_score
+    pred_probs_val = model.predict_proba(X_actuals)[:, 1]
+    print("AUROC score: ", roc_auc_score(y_actuals, pred_probs_val))
+    return pred_probs_val
